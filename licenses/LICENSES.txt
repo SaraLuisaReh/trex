@@ -1,0 +1,149 @@
+T-Rex – Third-Party Licenses
+===========================
+
+This software bundle includes third-party tools and libraries.
+Each component is distributed under its respective license.
+
+T-Rex invokes these tools as independent executables. No modifications
+have been made unless explicitly stated.
+
+------------------------------------------------------------
+T-Rex
+------------------------------------------------------------
+License: GNU General Public License v3.0 (GPLv3)
+Copyright (c) 2026 Sara Luisa Reh
+
+------------------------------------------------------------
+GATK 4.6.0 (Genome Analysis Toolkit)
+------------------------------------------------------------
+License: BSD 3-Clause License
+Copyright (c) Broad Institute
+
+------------------------------------------------------------
+Picard 3.3
+------------------------------------------------------------
+License: MIT License
+Copyright (c) Broad Institute
+
+------------------------------------------------------------
+VarScan 2.3.9
+------------------------------------------------------------
+License: MIT License
+
+------------------------------------------------------------
+Bedtools 2.31.1
+------------------------------------------------------------
+License: MIT License
+
+------------------------------------------------------------
+Samtools 1.21
+------------------------------------------------------------
+License: MIT/Expat License
+
+------------------------------------------------------------
+BCFtools 1.23
+------------------------------------------------------------
+License: MIT/Expat License
+
+------------------------------------------------------------
+bgzip (htslib 1.23)
+------------------------------------------------------------
+License: MIT/Expat License
+
+------------------------------------------------------------
+BWA 0.7.17
+------------------------------------------------------------
+License: GNU General Public License v3.0 (GPLv3)
+
+Source code:
+https://github.com/lh3/bwa
+
+------------------------------------------------------------
+bam-readcount 1.0.1
+------------------------------------------------------------
+License: GNU General Public License v3.0 (GPLv3)
+
+Source code:
+https://github.com/genome/bam-readcount
+
+------------------------------------------------------------
+Trimmomatic 0.39
+------------------------------------------------------------
+License: GNU General Public License v3.0 (GPLv3)
+
+Source code:
+http://www.usadellab.org/cms/?page=trimmomatic
+
+------------------------------------------------------------
+SnpEff 5.4b
+------------------------------------------------------------
+License: GNU Lesser General Public License (LGPL)
+
+------------------------------------------------------------
+Java Runtime (OpenJDK)
+------------------------------------------------------------
+License: GNU General Public License v2 with Classpath Exception
+
+Source code:
+https://openjdk.org/
+
+------------------------------------------------------------
+Python Packages (bundled via PyInstaller)
+------------------------------------------------------------
+
+The following Python packages are included in this distribution:
+
+altgraph 0.17.5 – MIT License
+customtkinter 5.2.2 – MIT License
+darkdetect 0.8.0 – MIT License
+macholib 1.16.4 – MIT License
+numpy 2.4.3 – BSD License
+packaging 26.0 – BSD/Apache License
+pillow 12.1.1 – PIL License
+pyinstaller 6.19.0 – GPLv2 with bootloader exception
+pyinstaller-hooks-contrib 2026.3 – Apache License 2.0
+scipy 1.17.1 – BSD License
+setuptools 82.0.1 – MIT License
+wheel 0.46.3 – MIT License
+
+These packages are included as part of the PyInstaller bundle and
+are used without modification.
+
+------------------------------------------------------------
+Reference Data
+------------------------------------------------------------
+The reference datasets included in this distribution were obtained from
+public sources and modified to ensure compatibility with T-Rex.
+
+Modifications include:
+- File format adjustments
+- Subsetting of data
+- Indexing and preprocessing for pipeline compatibility
+
+Original sources:
+- Homo sapiens reference genome GRCh38 (Ensembl)
+  - Source: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+  - © EMBL-EBI and the Ensembl project
+  - License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+- Genome Aggregation Database (gnomAD) v4.0
+  - Source: https://gnomad.broadinstitute.org
+  - © Broad Institute
+  - License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+- ClinVar variant database
+  - Source: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
+  - Provided by the National Center for Biotechnology Information (NCBI)
+  - License: Public Domain (U.S. Government Work)
+
+------------------------------------------------------------
+Notes
+------------------------------------------------------------
+- All third-party tools are executed as separate programs via command-line calls.
+- They are included in this distribution as unmodified binaries or JAR files.
+- Each tool remains under its own license.
+
+GPL Compliance:
+- For GPL-licensed tools (BWA, bam-readcount, Trimmomatic), source code
+  is available at the URLs listed above, fulfilling GPL requirements.
+
+Disclaimer:
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
