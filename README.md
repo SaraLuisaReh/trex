@@ -88,16 +88,46 @@ Install Python via Homebrew or from the official Python installer, as tkinter is
 
 >pip install -r requirements.txt
 
-**7. Download the reference dataset ZIP from [Zenodo](https://doi.org/10.5281/zenodo.19077464):**
+**7. Download required data and binaries from [Zenodo](https://doi.org/10.5281/zenodo.19077464):**
 
-- Unzip the downloaded file.
+The T-Rex application requires both reference data and precompiled binaries, which are distributed via Zenodo.
 
-- Copy all files from the unpacked folder into the **ref_data** folder inside your T-Rex installation. Only copy the single files, not the whole folder!
-  **Do not rename or move the files**, as T-Rex relies on the exact file names for correct operation.
+i) Download the following archives:
 
-- Following these steps ensures the application can access the reference data without errors.
+ref_data.zip – reference datasets
 
-_For the fully precompiled T-Rex app from Zenodo: You do not need to download this reference dataset. The precompiled app already includes all necessary reference files._
+apps_macos.zip – macOS binaries (macOS users only)
+
+apps_linux.zip – Linux binaries (Linux users only)
+
+ii) Extract and place files
+
+**Reference data:**
+
+- Unzip ref_data.zip
+
+- Copy all files inside into: **ref_data/**
+
+_Important: Only copy the individual files, not the outer folder.
+**Do not rename or move the files**, as T-Rex relies on the exact file names for correct operation._
+
+**Binaries:**
+
+Unzip the correct archive for your system:
+
+macOS:
+
+- Extract apps_macos.zip
+  
+- Copy contents into: **apps/**
+
+Linux:
+
+- Extract apps_linux.zip
+  
+- Copy contents into: **apps/**
+
+_For the fully precompiled T-Rex app from Zenodo: You do not need to download this reference dataset nor binaries. The precompiled app already includes all necessary reference files and binaries._
 
 **8. Run the application:**
 > python view.py
