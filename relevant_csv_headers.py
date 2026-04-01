@@ -15,8 +15,6 @@ def store_input_line_in_dict(seperator, input_line, col_to_header_dict):
     for i in range(len(lineparts)):
         if i in relevant_cols:
             content = lineparts[i]
-            if col_to_header_dict[i]=="sample":
-                output_dict["af_f"] = 1
             # store content in output_dict under the associated header
             output_dict[col_to_header_dict[i]] = content
     return output_dict
