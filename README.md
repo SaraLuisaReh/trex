@@ -183,8 +183,10 @@ To ensure that all variants are displayed in the application, please set the max
 
 ## Source Code & Citation
 
-- The full source code is available on GitHub.  
-- Please cite the software using the [Zenodo archive DOI](https://doi.org/10.5281/zenodo.19135262).
+The full source code is available on GitHub.
+If you use this software, please cite it via its [Zenodo archive DOI](https://doi.org/10.5281/zenodo.19135262). In addition, we kindly ask you to cite the associated preprint:
+
+Reh, S.-L., Walter, C., Lohse, J., Ghete, T., Metzler, M., Quante, A., Hauer, J., & Auer, F. (2026). T-Rex: Standardized Analysis of Germline Variants in Whole-Exome Sequencing Trios. bioRxiv. [https://doi.org/10.64898/2026.03.30.715083](https://doi.org/10.64898/2026.03.30.715083).
 
 ---
 
