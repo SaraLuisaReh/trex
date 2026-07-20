@@ -130,7 +130,9 @@ Original sources:
   - © Broad Institute
   - License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 - ClinVar variant database
-  - Source: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
+  - Source: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20260114.vcf.gz
+  - Release Date: 14.01.2026
+  - Assembly: GRCh38
   - Provided by the National Center for Biotechnology Information (NCBI)
   - License: Public Domain (U.S. Government Work)
 
