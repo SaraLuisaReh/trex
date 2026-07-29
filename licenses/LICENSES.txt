@@ -125,13 +125,13 @@ Original sources:
   - Source: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
   - © EMBL-EBI and the Ensembl project
   - License: Creative Commons Attribution 4.0 International (CC BY 4.0)
-- Genome Aggregation Database (gnomAD) v4.0
+- Genome Aggregation Database (gnomAD) v4.1
   - Source: https://gnomad.broadinstitute.org
   - © Broad Institute
   - License: Creative Commons Attribution 4.0 International (CC BY 4.0)
 - ClinVar variant database
-  - Source: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20260114.vcf.gz
-  - Release Date: 14.01.2026
+  - Source: https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20260720.vcf.gz
+  - Release Date: 20.07.2026
   - Assembly: GRCh38
   - Provided by the National Center for Biotechnology Information (NCBI)
   - License: Public Domain (U.S. Government Work)
