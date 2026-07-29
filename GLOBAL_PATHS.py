@@ -12,7 +12,7 @@ else:
 BEDFILE_PATH= os.path.join(CURRENT_PATH, "ref_data", "target.bed")
 REF_GENOME_PATH=os.path.join(CURRENT_PATH, "ref_data", "Homo_sapiens.GRCh38.dna.primary_assembly_bg.fa.gz")
 CPG_FILEPATH=os.path.join(CURRENT_PATH, "ref_data", "cpg_positions.txt")
-GNOMAD_PATH=os.path.join(CURRENT_PATH, "ref_data", "gnomad.exomes.v4.0.sites.slimmed_nochr.vcf.gz")
+GNOMAD_PATH=os.path.join(CURRENT_PATH, "ref_data", "gnomad.exomes.v4.1.sites.slimmed_nochr.vcf.gz")
 CLINVAR_PATH=os.path.join(CURRENT_PATH, "ref_data", "clinvar.vcf.gz")
 
 # Detect OS and architecture
