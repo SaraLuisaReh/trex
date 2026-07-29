@@ -3,7 +3,7 @@
 
 relevant_headers = [
     "af_c","af_m","af_f","dp_c","dp_f","dp_m","gene","location","feature_type","consequence","existing_variation","symbol","biotype","exon","intron",
-    "ref","alt","chr","mapinfo","sample", "gnomad_ac", "gnomad_an", "gnomad_af", "gnomad_ac_nfe", "gnomad_an_nfe", "gnomad_af_nfe", "gnomad_ac_european", "gnomad_an_european", "gnomad_af_european"
+    "ref","alt","chr","mapinfo","sample", "gnomad_ac", "gnomad_an", "gnomad_af", "gnomad_ac_nfe", "gnomad_an_nfe", "gnomad_af_nfe", "gnomad_ac_european", "gnomad_an_european", "gnomad_af_european", "gnomad_af_groupmax"
 ]
 
 excluded_headers_outputfile = ["af_c","af_m","af_f","af_c_predicted","af_f_predicted", "af_m_predicted", "dp_c","dp_f","dp_m", "sample"]
@@ -15,8 +15,12 @@ def store_input_line_in_dict(seperator, input_line, col_to_header_dict):
     for i in range(len(lineparts)):
         if i in relevant_cols:
             content = lineparts[i]
+            #if col_to_header_dict[i]=="sample":
+                #output_dict["af_f"] = 1
             # store content in output_dict under the associated header
             output_dict[col_to_header_dict[i]] = content
+    # add an entry for groupmax_faf
+    output_dict["gnomad_an_groupmax"]=output_dict["gnomad_an"]
     return output_dict
 
 
