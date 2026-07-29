@@ -23,7 +23,7 @@ It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customi
   - Quality control after each analysis step  
 - Statistical tests supported: Chi-square test and Transmission Disequilibrium Test with automatic Bonferroni correction (α ≤ 0.05)  
 - Filtering based on allele frequency from gnomAD v4.1 (European population >582,716 individuals)  
-- Pathogenicity annotation using ClinVar data  (Release 20.07.2026)
+- Pathogenicity annotation using ClinVar data  (Release date: 20.07.2026)
 - Tested with 13 medical doctors and scientists for stability and intuitive user design
 
 ---
@@ -173,8 +173,8 @@ To ensure that all variants are displayed in the application, please set the max
 
 T-Rex uses publicly available reference datasets:
 - Ensembl GRCh38 (© EMBL-EBI and the Ensembl project, CC BY 4.0)
-- gnomAD v4.0 (© Broad Institute, CC BY 4.0)
-- ClinVar (NCBI, Public Domain)
+- gnomAD v4.1 (© Broad Institute, CC BY 4.0)
+- ClinVar (Release date: 20.07.2026) (NCBI, Public Domain)
 
 Preprocessed reference files compatible with T-Rex are available on Zenodo.
 
