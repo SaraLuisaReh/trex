@@ -4,7 +4,7 @@
 import os
 from statistics import statistical_test_for_unpaired_groups, transm_disequ_test
 from relevant_csv_headers import store_input_line_in_dict, store_position_of_relevant_headers, relevant_headers, excluded_headers_outputfile
-# currently used entries of linedict: af_c, af_f, af_m, gnomad_af,gnomad_af_nfe, gnomad_af_european, gnomad_an, gnomad_an_nfe, gnomad_an_european, biotype, location, alt, ref
+# currently used entries of linedict: af_c, af_f, af_m, gnomad_af,gnomad_af_nfe, gnomad_af_european, gnomad_an, gnomad_an_nfe, gnomad_an_european, biotype, location, alt, ref, gnomad_af_groupmax, gnomad_an_groupmax
 
 significance_level = 0.05
 
@@ -93,7 +93,7 @@ def filter_file_for_variants(inputfolder, inputfiletype, outputpath, cutoff, ref
 def variant_is_accepted_without_significance(option_dict, line_dict, cpg_dict):
     bool_homozygous = check_homozygous(option_dict["homozygous"], float(line_dict["af_c"]))
     bool_protein = check_protein_coding(option_dict["protein_coding"], line_dict["biotype"])
-    bool_denovo = check_denovo(option_dict["denovo"], float(line_dict["af_c"]), float(line_dict["af_f"]), float(line_dict["af_m"]))
+    bool_denovo = check_denovo(option_dict["denovo"], float(line_dict["af_c"]), float(line_dict["af_f"]), float(line_dict["af_m"]), float(line_dict["dp_c"]), float(line_dict["dp_f"]), float(line_dict["dp_m"]))
     bool_cpg = check_cpg(option_dict["cpg"], line_dict["location"], line_dict["ref"], line_dict["alt"], cpg_dict)
     accepted = bool_homozygous and bool_protein and bool_denovo and bool_cpg
     return accepted
@@ -110,18 +110,13 @@ def check_protein_coding(protein_coding, var_type):
             return False
     return True
 
-def check_denovo(denovo:bool, af_c:float, af_f:float, af_m:float):
+def check_denovo(denovo:bool, af_c:float, af_f:float, af_m:float, dp_c:float, dp_f:float, dp_m:float):
+    # child is only denovo if both parents are homozyous for the reference allele
     if denovo:
-        if af_c < 0.3:
+        if af_c >= 0.3 and af_f<0.00001 and af_m<0.00001 and dp_c>=20 and dp_m>=20 and dp_f>=20:
+            return True
+        else:
             return False
-        # if child is heterozygot: nicht denovo wenn mind. ein Elternteil heterozygot ist
-        if af_c <0.8:
-            if af_f>=0.3 or af_m>=0.3:
-                return False
-        # if child is homozygous: nicht de novo wenn beide Eltern mind. heterozygot sind
-        if af_c>=0.8:
-            if af_f >= 0.3 and af_m >= 0.3:
-                return False
     return True
 
 def check_cpg(cpg:bool, location:str, ref:str, alt:str, cpg_dict:dict):
@@ -223,6 +218,10 @@ def test_for_tdt(variant_to_hetero_parents, variant, line_dict, variant_to_child
     af_f = float(line_dict["af_f"])
     af_m = float(line_dict["af_m"])
     af_c = float(line_dict["af_c"])
+    dp_c = float(line_dict["dp_c"])
+    dp_m = float(line_dict["dp_m"])
+    dp_f = float(line_dict["dp_f"])
+
     # check if parents are heterozygous; if yes add +1 to the count of heterozygous parents in the variant_to_hetero_parents dict
     hetero_father = check_for_hetero_var(variant_to_hetero_parents, variant, af_f)
     hetero_mother = check_for_hetero_var(variant_to_hetero_parents, variant, af_m)
@@ -246,7 +245,7 @@ def test_for_tdt(variant_to_hetero_parents, variant, line_dict, variant_to_child
                 variant_to_child_of_hetero_parents[variant]+=1
         # case 4: both parents are homozygous -> does not have to be checked because then AF of child is not counted
         # case 5: de novo mutation -> count
-        elif check_denovo(True, af_c, af_f, af_m):
+        elif check_denovo(True, af_c, af_f, af_m, dp_c, dp_f, dp_m):
             check_for_hetero_or_homo_var_child(variant_to_child_of_hetero_parents, variant, af_c)
             variant_to_hetero_parents.setdefault(variant,0)
 
