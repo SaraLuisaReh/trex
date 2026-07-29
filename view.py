@@ -22,7 +22,7 @@ bg_dict = {"Dark": "gray17", "Light": "gray86"}
 fg_dict = {"Dark":"white", "Light": "black"}
 current_bg = bg_dict["Dark"]
 current_fg = fg_dict["Dark"]
-default_ref_header_dict = {"european":"_european", "non_finnish_european":"_nfe", "overall":""}
+default_ref_header_dict = {"european":"_european", "non_finnish_european":"_nfe", "overall":"", "popmax":"_groupmax"}
 
 
 class TREX(ctk.CTk):
@@ -247,13 +247,15 @@ class MainPage(ctk.CTkFrame):
         # Create Radiobutton for "European", "Non-Finnish European" and "Overall"
         self.radio_frame = ctk.CTkFrame(master=analysis_frame, fg_color=bg_color)
         self.radio_frame.grid(row=8, column=2, columnspan=3, padx=(10,0), pady=5, sticky="nw")
-        self.ref_population = ctk.StringVar(value="european")
+        self.ref_population = ctk.StringVar(value="popmax")
         self.radio_european = tk.Radiobutton(master=self.radio_frame, text="European", variable=self.ref_population, value="european", fg=current_fg, bg=current_bg, font=ctk.CTkFont(size=14))
         self.radio_overall = tk.Radiobutton(master=self.radio_frame, text="Overall", variable=self.ref_population, value="overall", fg=current_fg, bg=current_bg, font=ctk.CTkFont(size=14))
+        self.radio_popmax = tk.Radiobutton(master=self.radio_frame, text="PopMax", variable=self.ref_population, value="popmax", fg=current_fg, bg=current_bg, font=ctk.CTkFont(size=14))
         self.radio_non_finnish_european = tk.Radiobutton(master=self.radio_frame, text="Non-Finnish European", variable=self.ref_population, value="non_finnish_european", fg=current_fg, bg=current_bg, font=ctk.CTkFont(size=14))
-        self.radio_european.grid(row=0, column=0, padx=(10, 0), pady=5, sticky="w")
-        self.radio_non_finnish_european.grid(row=0, column=1, padx=(10, 0), pady=5, sticky="w")
-        self.radio_overall.grid(row=0, column=2, padx=(10, 0), pady=5, sticky="w")
+        self.radio_popmax.grid(row=0, column=0, padx=(10, 0), pady=5, sticky="w")
+        self.radio_overall.grid(row=0, column=1, padx=(10, 0), pady=5, sticky="w")
+        self.radio_european.grid(row=0, column=2, padx=(10, 0), pady=5, sticky="w")
+        self.radio_non_finnish_european.grid(row=0, column=3, padx=(10, 0), pady=5, sticky="w")
 
         # Additional Options
         self.options_label = ctk.CTkLabel(master=analysis_frame, text="5. Step: Specify additional options for filtering variants",
@@ -320,7 +322,9 @@ class MainPage(ctk.CTkFrame):
         # Reference databases
         ref_text = (
             "Filtering by allele frequency in the reference population is based on "
-            "data from gnomAD v4.0 (European reference population >582,716 individuals). "
+            "data from gnomAD v4.1. By default, filtering uses the GroupMax "
+            "allele frequency, which represents the highest allele frequency observed "
+            "across all gnomAD populations. "
             "Variant pathogenicity annotations are derived from ClinVar."
         )
 
@@ -386,7 +390,8 @@ class MainPage(ctk.CTkFrame):
 
         tsv_intro = (
             "If the analysis is started with a TSV or CSV file, the following headers must "
-            "be present. The order does not matter, but the names must match exactly:"
+            "be present. Please select 'Overall' as the reference population. The order of "
+            "the columns does not matter, but the names must match exactly:"
         )
 
         tsv_intro_label = ctk.CTkLabel(
@@ -506,7 +511,7 @@ class MainPage(ctk.CTkFrame):
         self.entry_field.delete(0, tk.END)
         self.entry_field.insert(0, "5.0")
         # Reset reference population
-        self.ref_population.set("european")
+        self.ref_population.set("popmax")
         # Uncheck all checkboxes
         self.checkbox_1.deselect()
         self.checkbox_2.deselect()
@@ -575,7 +580,7 @@ class MainPage(ctk.CTkFrame):
         global current_bg, current_fg
         current_bg = bg_dict[new_appearance]
         current_fg = fg_dict[new_appearance]
-        for button in [self.radio_overall,self.radio_european, self.radio_non_finnish_european]:
+        for button in [self.radio_overall,self.radio_european, self.radio_non_finnish_european, self.radio_popmax]:
             button.config(bg=current_bg, fg=current_fg)
 
     def options_dropdown(self):
@@ -642,7 +647,7 @@ class MainPage(ctk.CTkFrame):
             self.after(0, lambda: self.controller.update_status(message))
         self.stop_event.clear()  # reset stop event before starting
         option_dict = self.get_checkbox_state()
-        ref_pop_suffix = default_ref_header_dict[self.ref_population.get()]  # "_european", "_nfe" or ""
+        ref_pop_suffix = default_ref_header_dict[self.ref_population.get()]  # "_european", "_nfe", "_groupmax" or ""
         output_labeltext = control_analysis(self.upload_pathfield.get(), analysis_type, self.output_pathfield.get(),
                                             self.entry_field.get(), ref_pop_suffix, option_dict, progress_callback, self.stop_event)
         # Switch back to main thread to update UI
