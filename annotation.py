@@ -19,7 +19,7 @@ tsv_headers = [
     "gnomAD_AC", "gnomAD_AN","gnomAD_AF","gnomAD_nhomalt",
     "gnomAD_AC_nfe", "gnomAD_AN_nfe", "gnomAD_AF_nfe",
     "gnomAD_AC_fin", "gnomAD_AN_fin", "gnomAD_AF_fin",
-    "gnomAD_AC_european", "gnomAD_AN_european", "gnomAD_AF_european",
+    "gnomAD_AC_european", "gnomAD_AN_european", "gnomAD_AF_european","gnomAD_AF_GroupMax",
     "ClinVar_Significance",
     "ClinVar_ReviewStatus",
     "ClinVar_Disease",
@@ -90,7 +90,6 @@ def compute_af_from_ac_an(ac, an, af):
         # if af is already computed: do not recompute
         return af
 
-
 # main function
 def convert_annotated_vcf_to_tsv(input_vcf_file, output_tsv_file, sample_name):
     person_to_column = {}
@@ -126,6 +125,7 @@ def convert_annotated_vcf_to_tsv(input_vcf_file, output_tsv_file, sample_name):
                         raw_ac = info_dict.get("AC", "-1")
                         raw_an = info_dict.get("AN", "-1")
                         raw_af = info_dict.get("AF", "-1")
+                        raw_fafmax = info_dict.get("fafmax_faf95_max", "-1")
                         raw_ac_nfe = info_dict.get("AC_nfe", "-1")
                         raw_an_nfe = info_dict.get("AN_nfe", "-1")
                         raw_af_nfe = info_dict.get("AF_nfe", "-1")
@@ -143,10 +143,12 @@ def convert_annotated_vcf_to_tsv(input_vcf_file, output_tsv_file, sample_name):
                         gnomad_ac_fin = split_and_sum(raw_ac_fin)
                         gnomad_an_fin = split_and_sum(raw_an_fin)
 
-                        # Recompute AF from AC / AN if ac/an is comma-separated. If not, return the raw values
+                        # Recompute AF from AC / AN if ac/an is comma-separated. If not, return the raw values.
                         gnomad_af = compute_af_from_ac_an(gnomad_ac, gnomad_an, raw_af)
                         gnomad_af_nfe = compute_af_from_ac_an(gnomad_ac_nfe, gnomad_an_nfe, raw_af_nfe)
                         gnomad_af_fin = compute_af_from_ac_an(gnomad_ac_fin, gnomad_an_fin, raw_af_fin)
+                        # if fafmax is -1 (= not in line), fafmax is normally 0 -> recompute from ac and an
+                        gnomad_fafmax= compute_af_from_ac_an(gnomad_ac, gnomad_an, raw_fafmax)
 
                         # Compute european values
                         gnomad_an_european = safe_sum(gnomad_an_fin, gnomad_an_nfe)
@@ -247,6 +249,7 @@ def convert_annotated_vcf_to_tsv(input_vcf_file, output_tsv_file, sample_name):
                             "gnomAD_AC_european": str(gnomad_ac_european),
                             "gnomAD_AN_european": str(gnomad_an_european),
                             "gnomAD_AF_european": str(gnomad_af_european),
+                            "gnomAD_AF_GroupMax": str(gnomad_fafmax),
                             # ClinVar
                             "ClinVar_Significance": clinvar_sig,
                             "ClinVar_ReviewStatus": clinvar_revstat,
