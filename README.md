@@ -88,7 +88,7 @@ Install Python via Homebrew or from the official Python installer, as tkinter is
 
 >pip install -r requirements.txt
 
-**7. Download the reference dataset ZIP from [Zenodo](https://doi.org/10.5281/zenodo.19077464):**
+**7. Download the reference dataset ZIP from [Zenodo](https://doi.org/10.5281/zenodo.21649434):**
 
 - Unzip the downloaded file.
 
@@ -141,7 +141,7 @@ If you prefer a more restrictive approach (only making files executable):
 - **Recommendation:** We recommend to start the analysis with FASTQ, BAM or VCF files due to the stricter format requirements for TSV/CSV files.
 
 ### Test Files
-T-Rex can be tested by downloading the file “trio-test-data.zip” from [Zenodo](https://doi.org/10.5281/zenodo.19135262).
+T-Rex can be tested by downloading the file “trio-test-data.zip” from [Zenodo](https://doi.org/10.5281/zenodo.21649434).
 The dataset contains FASTQ, BAM, VCF, and TSV files from three artificial trios.
 
 The dataset is very small and only requires a few minutes to run.
