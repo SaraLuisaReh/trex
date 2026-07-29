@@ -6,7 +6,7 @@
 
 **T-Rex** (**T**rio **R**are variant analysis of **Ex**omes) is a desktop application for standardized and local analysis of Illumina whole exome sequencing germline trio data.
 
-It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customizable filtering options for variant type, statistical significance, and population allele frequency based on the gnomAD database.
+It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customizable filtering options for variant type, statistical significance, and population allele frequency based on the gnomAD database v4.1.
 
 ---
 
@@ -22,8 +22,8 @@ It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customi
   - Variant annotation via **SnpEff / SnpSift**  
   - Quality control after each analysis step  
 - Statistical tests supported: Chi-square test and Transmission Disequilibrium Test with automatic Bonferroni correction (α ≤ 0.05)  
-- Filtering based on allele frequency from gnomAD v4.0 (European population >582,716 individuals)  
-- Pathogenicity annotation using ClinVar data  
+- Filtering based on allele frequency from gnomAD v4.1 (European population >582,716 individuals)  
+- Pathogenicity annotation using ClinVar data  (Release 20.07.2026)
 - Tested with 13 medical doctors and scientists for stability and intuitive user design
 
 ---
@@ -51,7 +51,7 @@ It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customi
 
 **1. Clone the repository:**
 
->git clone https://github.com/SaraLuisaReh/trex.git
+>git clone https://github.com/yourusername/trex.git
 
 >cd trex
 
@@ -88,46 +88,16 @@ Install Python via Homebrew or from the official Python installer, as tkinter is
 
 >pip install -r requirements.txt
 
-**7. Download required data and binaries from [Zenodo](https://doi.org/10.5281/zenodo.19077464):**
+**7. Download the reference dataset ZIP from [Zenodo](https://doi.org/10.5281/zenodo.19077464):**
 
-The T-Rex application requires both reference data and precompiled binaries, which are distributed via Zenodo.
+- Unzip the downloaded file.
 
-i) Download the following archives:
+- Copy all files from the unpacked folder into the **ref_data** folder inside your T-Rex installation. Only copy the single files, not the whole folder!
+  **Do not rename or move the files**, as T-Rex relies on the exact file names for correct operation.
 
-ref_data.zip – reference datasets
+- Following these steps ensures the application can access the reference data without errors.
 
-apps_macos.zip – macOS binaries (macOS users only)
-
-apps_linux.zip – Linux binaries (Linux users only)
-
-ii) Extract and place files
-
-**Reference data:**
-
-- Unzip ref_data.zip
-
-- Copy all files inside into: **ref_data/**
-
-_Important: Only copy the individual files, not the outer folder.
-**Do not rename or move the files**, as T-Rex relies on the exact file names for correct operation._
-
-**Binaries:**
-
-Unzip the correct archive for your system:
-
-macOS:
-
-- Extract apps_macos.zip
-  
-- Copy contents into: **apps/**
-
-Linux:
-
-- Extract apps_linux.zip
-  
-- Copy contents into: **apps/**
-
-_For the fully precompiled T-Rex app from Zenodo: You do not need to download this reference dataset nor binaries. The precompiled app already includes all necessary reference files and binaries._
+_For the fully precompiled T-Rex app from Zenodo: You do not need to download this reference dataset. The precompiled app already includes all necessary reference files._
 
 **8. Run the application:**
 > python view.py
@@ -144,7 +114,7 @@ This grants execution rights to all files in the folder for your user.
 
 If you prefer a more restrictive approach (only making files executable):
 
-> find /path/to/your/folder -type f -exec chmod +x {} \;
+> find /path/to/your/folder -type f -exec chmod +x {} ;
 
 ---
 
@@ -183,10 +153,8 @@ To ensure that all variants are displayed in the application, please set the max
 
 ## Source Code & Citation
 
-The full source code is available on GitHub.
-If you use this software, please cite it via its [Zenodo archive DOI](https://doi.org/10.5281/zenodo.19135262). In addition, we kindly ask you to cite the associated preprint:
-
-Reh, S.-L., Walter, C., Lohse, J., Ghete, T., Metzler, M., Quante, A., Hauer, J., & Auer, F. (2026). T-Rex: Standardized Analysis of Germline Variants in Whole-Exome Sequencing Trios. bioRxiv. [https://doi.org/10.64898/2026.03.30.715083](https://doi.org/10.64898/2026.03.30.715083).
+- The full source code is available on GitHub.  
+- Please cite the software using the [Zenodo archive DOI](https://doi.org/10.5281/zenodo.19135262).
 
 ---
 
