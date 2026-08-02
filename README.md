@@ -22,7 +22,7 @@ It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customi
   - Variant annotation via **SnpEff / SnpSift**  
   - Quality control after each analysis step  
 - Statistical tests supported: Chi-square test and Transmission Disequilibrium Test with automatic Bonferroni correction (α ≤ 0.05)  
-- Filtering based on allele frequency from gnomAD v4.1 (European population >582,716 individuals)  
+- Filtering based on allele frequency from gnomAD v4.1 (PopMax, Overall, European, and Non-Finnish European populations)  
 - Pathogenicity annotation using ClinVar data  (Release date: 20.07.2026)
 - Tested with 13 medical doctors and scientists for stability and intuitive user design
 
@@ -148,6 +148,10 @@ The dataset is very small and only requires a few minutes to run.
 
 The dataset includes four variants with a gnomAD allele frequency of approximately 85%.
 To ensure that all variants are displayed in the application, please set the maximum allele frequency to 100%.
+
+
+### Running the Analysis Pipeline on a Server and/or Parallelized
+The analysis pipeline of T-Rex can also be run parallelized on a server via the bash script "run_controller_parallel.sh". Usage instructions are in the script.
 
 ---
 
