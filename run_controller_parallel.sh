@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Usage: ./run_controller_parallel.sh inputfolder outputfolder
+# Start and end of the analysis could also be modified by changing --start or --end in line 35 of this script.
+# (Possibilities for start and end include "fastq", "bam", "vcf" and "tsv".)
 
 INPUTFOLDER="$1"
 OUTPUTFOLDER="$2"
@@ -30,7 +32,7 @@ export INPUTFOLDER OUTPUTFOLDER
 for SAMPLE in $SAMPLES; do
     (
         echo "Starting analysis for $SAMPLE..."
-        time python3 -u controller.py "$INPUTFOLDER" "$OUTPUTFOLDER" --samples "$SAMPLE" --end "bam"
+        time python3 -u controller.py "$INPUTFOLDER" "$OUTPUTFOLDER" --samples "$SAMPLE" --start "fastq" --end "tsv"
         echo "Finished analysis for $SAMPLE"
     ) &
 
