@@ -99,10 +99,26 @@ Install Python via Homebrew or from the official Python installer, as tkinter is
 
 _For the fully precompiled T-Rex app from Zenodo: You do not need to download this reference dataset. The precompiled app already includes all necessary reference files._
 
-**8. Run the application:**
+**8. Download the app binaries**
+
+- Download the app binaries ZIP for your operating system from **[Zenodo](https://doi.org/10.5281/zenodo.21649434)**:
+
+   * **Linux/Ubuntu:** `apps_linux.zip`
+   * **macOS:** `apps_macos.zip`
+
+- Unzip the downloaded file.
+
+- Copy all files and folders from the extracted folder into the `apps` folder of your T-Rex installation.
+
+   * Copy **only the files and subfolders** from the extracted folder into the apps folder. Do **not** copy the extracted folder itself.
+   * **Do not rename, remove, or move any files or folders**, as T-Rex expects the original file names and directory structure.
+
+_Note:If you downloaded the fully precompiled T-Rex application from Zenodo, you can skip this step. The precompiled application already contains all required app binaries._
+
+**9. Run the application:**
 > python view.py
 
-**9. Fixing Execution Permissions**
+**10. Fixing execution permissions**
 
 In some cases, the downloaded app may not have the correct execution permissions.
 
@@ -122,7 +138,7 @@ If you prefer a more restrictive approach (only making files executable):
 
 - Click **“New Analysis”** in the app and follow the on-screen instructions.
 
-### Input File Formats
+### Input file formats
 
 - Supports FASTQ, BAM, VCF, CSV, and TSV input files.  
 - For **TSV/CSV input**, the file must include these exact headers (order doesn’t matter):
@@ -140,7 +156,7 @@ If you prefer a more restrictive approach (only making files executable):
 
 - **Recommendation:** We recommend to start the analysis with FASTQ, BAM or VCF files due to the stricter format requirements for TSV/CSV files.
 
-### Test Files
+### Test files
 T-Rex can be tested by downloading the file “trio-test-data.zip” from [Zenodo](https://doi.org/10.5281/zenodo.21649434).
 The dataset contains FASTQ, BAM, VCF, and TSV files from three artificial trios.
 
@@ -150,7 +166,7 @@ The dataset includes four variants with a gnomAD allele frequency of approximate
 To ensure that all variants are displayed in the application, please set the maximum allele frequency to 100%.
 
 
-### Running the Analysis Pipeline on a Server and/or Parallelized
+### Running the analysis pipeline on a server and/or parallelized
 The analysis pipeline of T-Rex can also be run parallelized on a server via the bash script "run_controller_parallel.sh". Usage instructions are in the script.
 
 ---
