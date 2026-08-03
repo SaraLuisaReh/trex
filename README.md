@@ -108,9 +108,11 @@ _For the fully precompiled T-Rex app from Zenodo: You do not need to download th
 
 - Unzip the downloaded file.
 
-- Copy all files and folders from the extracted folder into the `apps` folder of your T-Rex installation.
+- Open the `apps` folder inside of the extracted folder.
 
-   * Copy **only the files and subfolders** from the extracted folder into the apps folder. Do **not** copy the extracted folder itself.
+- Copy all files and folders from the extracted `apps` folder into the `apps` folder of your T-Rex installation.
+
+   * Copy **only the files and subfolders** into the apps folder. Do **not** copy the extracted folder itself.
    * **Do not rename, remove, or move any files or folders**, as T-Rex expects the original file names and directory structure.
 
 _Note:If you downloaded the fully precompiled T-Rex application from Zenodo, you can skip this step. The precompiled application already contains all required app binaries._
