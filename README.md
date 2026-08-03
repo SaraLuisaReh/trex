@@ -51,7 +51,7 @@ It enables users to process **FASTQ, BAM, VCF, CSV, and TSV files** with customi
 
 **1. Clone the repository:**
 
->git clone https://github.com/yourusername/trex.git
+>git clone https://github.com/SaraLuisaReh/trex.git
 
 >cd trex
 
